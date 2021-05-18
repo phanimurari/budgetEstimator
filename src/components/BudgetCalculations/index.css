@@ -1,0 +1,8 @@
+
+.budget-calculations-container {
+  display:flex;
+}
+
+.calculated-item {
+  margin: 10px
+}

@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import BudgetCalculations from '../BudgetCalculations'
 import BudgetDetails from '../BudgetDetailsComponent'
 import BudgetItem from '../BudgetItem'
 import BudgetSelector from '../BudgetSelector'
@@ -10,33 +11,67 @@ class BudgetDetailsEstimator extends Component {
 
 
   componentDidMount() {
-    const {itemsBudgetDetails} = this.props;
-    this.setState({itemsBudgetDetails })
+    const itemsBudgetDetails = JSON.parse(localStorage.getItem("itemsBudgetDetails"));
+    if(itemsBudgetDetails !== null) {
+      this.setState({itemsBudgetDetails })  
+    }
+    else {
+      this.setState({itemsBudgetDetails : []})
+    }
   }
 
 onAddBudgetItem = (addedItem) => {
   
-  const {itemsBudgetDetails} = this.props
+   let {itemsBudgetDetails} = this.state
 
-  const updatedItemsBudgetDetails = [...itemsBudgetDetails, addedItem];
+  itemsBudgetDetails.push(addedItem)
 
+  this.onSettingItemsBudgetDetails(itemsBudgetDetails)
+
+}
+
+onAddCostOfItem = (itemName, itemCost) => {
+  
+  const {itemsBudgetDetails} = this.state
+
+
+  const updatedCostOfItem = itemsBudgetDetails.map( item => {
+    if(item.itemName === itemName) {
+      item.cost = itemCost
+    }
+    return item
+  })
+
+  this.onSettingItemsBudgetDetails(updatedCostOfItem)
+}
+
+
+onSettingItemsBudgetDetails = (itemsBudgetDetails) =>{
   this.setState({itemsBudgetDetails})
+  
+  const itemsBudgetDetailsInString = JSON.stringify(itemsBudgetDetails)
+
+  localStorage.setItem("itemsBudgetDetails", itemsBudgetDetailsInString);
 }
 
 
   render() {
 
-    const {itemsBudgetDetails} = this.state;
+    const {itemsBudgetDetails} =  this.state
 
-    return (
-      <div className = "budget-estimator-container">
-      <h1>Budget Estimator</h1>
-      <BudgetItem onAddBudgetItem = {this.onAddBudgetItem}/>
-      <BudgetSelector />
-      <BudgetDetails itemsBudgetDetails = {itemsBudgetDetails}/>
-      </div>
-    )
-  }
+    
+      return (
+        <div className = "budget-estimator-container">
+        <h1>Budget Estimator</h1>
+        <BudgetItem onAddBudgetItem = {this.onAddBudgetItem}/>
+        <BudgetSelector itemsBudgetDetails = {itemsBudgetDetails} onAddCostOfItem ={this.onAddCostOfItem} />
+        <BudgetDetails itemsBudgetDetails = {itemsBudgetDetails}/>
+        <BudgetCalculations itemsBudgetDetails = {itemsBudgetDetails}/>
+        </div>
+      )
+    }
+
+    
 
 }
 

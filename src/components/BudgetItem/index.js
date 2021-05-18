@@ -2,8 +2,8 @@ import {Component} from 'react'
 
 
 class BudgetItem extends Component {
-  state  = {item: '', itemBudget : ''}
-
+    state =  {item: '', itemBudget : '', id : ''}
+  
 
   onChangeItem = (event) => {
 
@@ -25,12 +25,18 @@ class BudgetItem extends Component {
     const cost = 0;
     if(item !== "" && itemBudget !== "") {
 
+      this.setState({item : '', itemBudget: '', id : new Date().getSeconds()})
+
       const addedItem = {
+        id : new Date().getSeconds(),
         itemName: item,
-        budget: itemBudget,
+        budget: Number(itemBudget),
         cost
       }
+
+
       onAddBudgetItem(addedItem)
+
 
     }
     

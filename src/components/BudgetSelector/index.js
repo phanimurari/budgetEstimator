@@ -4,19 +4,48 @@ import {Component} from 'react'
 class BudgetSelector extends Component {
   state = { selectedItem : '', itemCost : ''}
 
+  onSelectItem = event => {
+    const selectedItem = event.target.value;
+    this.setState({selectedItem})
+  }
+
   renderSelectElement = () => {
-    return <select>
-      <option>Item 1</option>
-      <option>Item 2</option>
+
+    const {itemsBudgetDetails} = this.props
+
+    return <select  onChange = {this.onSelectItem}>
+    <option key ="select">select</option>
+    {itemsBudgetDetails.map( item => <option key = {item.id}>{item.itemName}</option>)}
     </select>
   }
 
+  onChangeCost = event => {
+
+    const itemCost = event.target.value
+
+    this.setState({itemCost})
+
+  }
+
+  addCostOfItem = () => {
+    const {onAddCostOfItem} = this.props
+    const {selectedItem, itemCost} = this.state;
+    if(itemCost !== '') {
+      onAddCostOfItem(selectedItem, Number(itemCost))
+    }
+  }
+
+  
 
   render() {
+
+    const {itemCost} = this.state
+
     return (
       <div>
         {this.renderSelectElement()}
-        <button type = 'button' >Add</button>
+        <input type='text' value = {itemCost} onChange = {this.onChangeCost} placeholder ="cost"/>
+        <button type = 'button'  onClick = {this.addCostOfItem}>Add</button>
       </div>
     )
   }
