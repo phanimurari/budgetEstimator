@@ -25,10 +25,10 @@ class BudgetItem extends Component {
     const cost = 0;
     if(item !== "" && itemBudget !== "") {
 
-      this.setState({item : '', itemBudget: '', id : new Date().getSeconds()})
+      this.setState({item : '', itemBudget: '', id : new Date()})
 
       const addedItem = {
-        id : new Date().getSeconds(),
+        id : new Date(),
         itemName: item,
         budget: Number(itemBudget),
         cost

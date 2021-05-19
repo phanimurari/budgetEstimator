@@ -1,32 +1,39 @@
+import {Component} from 'react'
 import "./index.css"
 
-const BudgetDetails = props => {
+import  BudgetItemDetails from '../BudgetItemsDetails/index'
 
-  const {itemsBudgetDetails} = props;
+class BudgetDetails extends Component {
 
-const deleteBudgetItem = (id) => {
-  console.log("delete Button clicked")
+deleteBudgetItem = (id) => {
+  const { onDeleteBudgetEstimator} = this.props
+
+  onDeleteBudgetEstimator(id)
+
 }
 
-const renderItems = () => {
 
-  const listOfBudgetItems = itemsBudgetDetails.map(item => <li key = {item.id} className = "budget-item-container">
-  
-  <p className = "budget-item">{item.itemName}</p>
-  <p className = "budget-item">{item.budget}</p>
-  <p className = "budget-item">{item.cost}</p>
-  <p className = "budget-item">{item.cost === 0 ? 0 :item.budget - item.cost}</p>
-  <button type='button'>Edit</button>
-  <button type='button' onClick = {deleteBudgetItem}>Delete</button>
-  </li>)
+renderItems = () => {
 
-return listOfBudgetItems
+  const {itemsBudgetDetails} = this.props;
+
+  const listOfBudgetItems = itemsBudgetDetails.map(item => <BudgetItemDetails key = {item.id} item = {item} deleteBudgetItem = {this.deleteBudgetItem} onEditItemDetails = {this.onEditItemDetails}/>)
+
+  console.log(listOfBudgetItems)
+
+  return listOfBudgetItems
 }
 
-  return <ul>
-    {renderItems()}
-  </ul>
-}
-  
+
+  render() {
+
+    return( <ul>
+      {this.renderItems()}
+    </ul>)
+  }
+    
+  }
+
+
 
 export default BudgetDetails
