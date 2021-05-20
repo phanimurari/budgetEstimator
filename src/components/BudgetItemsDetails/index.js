@@ -3,11 +3,24 @@ import {Component} from 'react'
 class BudgetItemDetails extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
+    this.intializeState()
+  }
+
+
+  componentDidMount() {
+    this.intializeState();
+    console.log("componentDiMount")
+  }
+
+  intializeState = () => {
+
+    const {item} = this.props;
+    
     this.state = {isEdit : false,
-       itemName : this.props.item.itemName, itemCost: this.props.item.cost,
-       itemBudget : this.props.item.budget,
-      id: this.props.item.id}
+      itemName : item.itemName, itemCost: item.cost,
+      itemBudget : item.budget,
+     id: item.id}
   }
 
 

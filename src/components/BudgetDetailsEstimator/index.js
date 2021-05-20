@@ -43,6 +43,9 @@ onAddCostOfItem = (itemName, itemCost) => {
   })
 
   this.onSettingItemsBudgetDetails(updatedCostOfItem)
+
+  console.log(updatedCostOfItem)
+
 }
 
 
