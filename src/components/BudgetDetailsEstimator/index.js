@@ -61,6 +61,25 @@ onDeleteBudgetEstimator = (id) => {
 }
 
 
+onEditedItemsBudgetDetails = (editedItem) => {
+
+  let {itemsBudgetDetails} = this.state
+
+
+  const updatedFilteredItems = itemsBudgetDetails.filter( item => {
+    if(item.id ===editedItem.id) {
+      item.itemName = editedItem.itemName
+      item.budget = editedItem.budget
+      item.cost = editedItem.cost
+    }
+    return item
+  })
+
+  this.onSettingItemsBudgetDetails(updatedFilteredItems)
+
+
+}
+
 onSettingItemsBudgetDetails = (itemsBudgetDetails) =>{
   this.setState({itemsBudgetDetails})
   
@@ -80,7 +99,7 @@ onSettingItemsBudgetDetails = (itemsBudgetDetails) =>{
         <h1>Budget Estimator</h1>
         <BudgetItem onAddBudgetItem = {this.onAddBudgetItem}/>
         <BudgetSelector itemsBudgetDetails = {itemsBudgetDetails} onAddCostOfItem ={this.onAddCostOfItem} />
-        <BudgetDetails itemsBudgetDetails = {itemsBudgetDetails} onDeleteBudgetEstimator = {this.onDeleteBudgetEstimator}/>
+        <BudgetDetails onEditedItemsBudgetDetails = {this.onEditedItemsBudgetDetails} itemsBudgetDetails = {itemsBudgetDetails} onDeleteBudgetEstimator = {this.onDeleteBudgetEstimator}/>
         <BudgetCalculations itemsBudgetDetails = {itemsBudgetDetails}/>
         </div>
       )
