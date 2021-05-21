@@ -15,11 +15,12 @@ deleteBudgetItem = (id) => {
 
 renderItems = () => {
 
-  const {itemsBudgetDetails, onEditedItemsBudgetDetails} = this.props;
 
+  const {itemsBudgetDetails, onEditedItemsBudgetDetails} = this.props;
+  
   const listOfBudgetItems = itemsBudgetDetails.map(item => <BudgetItemDetails onEditedItemsBudgetDetails = {onEditedItemsBudgetDetails} key = {item.id} item = {item} deleteBudgetItem = {this.deleteBudgetItem} onEditItemDetails = {this.onEditItemDetails}/>)
 
-  console.log(listOfBudgetItems)
+
 
   return listOfBudgetItems
 }

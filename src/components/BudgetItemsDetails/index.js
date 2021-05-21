@@ -2,12 +2,44 @@ import {Component} from 'react'
 
 class BudgetItemDetails extends Component {
 
+state = {isEdit : false,
+    itemName : '', itemCost: '',
+    itemBudget : '',
+   id: ''}
+
   constructor(props) {
     super(props)
+
+    console.log('constructor');
+
     this.state = {isEdit : false,
-       itemName : this.props.item.itemName, itemCost: this.props.item.cost,
-       itemBudget : this.props.item.budget,
-      id: this.props.item.id}
+      itemName : this.props.item.itemName, itemCost: this.props.item.cost,
+      itemBudget : this.props.item.budget,
+     id: this.props.item.id}
+
+  }
+
+
+
+  componentWillReceiveProps(nextProps) {
+    
+    const {item} = nextProps
+
+    
+    this.state = {
+      itemName : this.props.item.itemName, itemCost: this.props.item.cost,
+      itemBudget : this.props.item.budget,
+     id: this.props.item.id}
+
+    }
+
+  setStateOfItemDetails = () => {
+
+    const {item} = this.props
+    this.state ={
+      itemName : item.itemName, itemCost: item.cost,
+      itemBudget : item.budget,
+     id: item.id}
   }
 
 
@@ -39,6 +71,9 @@ class BudgetItemDetails extends Component {
 }
 
   onChangeItemName = (event) => {
+
+    console.log(event.target.value);
+
     this.setState({itemName : event.target.value})
   }
 
@@ -56,12 +91,8 @@ class BudgetItemDetails extends Component {
 
     const {item, deleteBudgetItem} = this.props
 
-    console.log(item, 'the item')
-
    const {isEdit, itemName, itemBudget, itemCost} = this.state
 
-
-   console.log(isEdit, itemName, itemBudget)
 
    return (
  <li className = "budget-item-container">
@@ -82,8 +113,6 @@ class BudgetItemDetails extends Component {
  </>}
 </li>)}
     
-
-
 }
 
 

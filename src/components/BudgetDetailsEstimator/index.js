@@ -85,7 +85,7 @@ onSettingItemsBudgetDetails = (itemsBudgetDetails) =>{
   
   const itemsBudgetDetailsInString = JSON.stringify(itemsBudgetDetails)
 
-  localStorage.setItem("itemsBudgetDetails", itemsBudgetDetailsInString);
+ localStorage.setItem("itemsBudgetDetails", itemsBudgetDetailsInString);
 }
 
 
@@ -93,7 +93,6 @@ onSettingItemsBudgetDetails = (itemsBudgetDetails) =>{
 
     const {itemsBudgetDetails} =  this.state
 
-    
       return (
         <div className = "budget-estimator-container">
         <h1>Budget Estimator</h1>
