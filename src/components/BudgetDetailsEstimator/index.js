@@ -85,7 +85,7 @@ onSettingItemsBudgetDetails = (itemsBudgetDetails) =>{
   
   const itemsBudgetDetailsInString = JSON.stringify(itemsBudgetDetails)
 
- localStorage.setItem("itemsBudgetDetails", itemsBudgetDetailsInString);
+//  localStorage.setItem("itemsBudgetDetails", itemsBudgetDetailsInString);
 }
 
 

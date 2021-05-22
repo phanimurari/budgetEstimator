@@ -35,7 +35,7 @@ const BudgetCalculations = props => {
 
 
   const deviation = () => {
-    return totalBudgetOfItems - totalCostOfItems
+    return totalBudget() - totalCost()
 
   }
 
