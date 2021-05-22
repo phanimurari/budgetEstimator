@@ -1,24 +1,33 @@
 import {Component} from 'react'
 
+import './index.css'
+
 class BudgetItemDetails extends Component {
 
   constructor(props) {
-    super(props);
-    this.intializeState()
-  }
+    super(props)
 
-
-  componentDidMount() {
-    this.intializeState();
-    console.log("componentDiMount")
-  }
-
-  intializeState = () => {
-
-    const {item} = this.props;
-    
     this.state = {isEdit : false,
-      itemName : item.itemName, itemCost: item.cost,
+      nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
+      itemBudget : this.props.item.budget,
+     id: this.props.item.id}
+
+  }
+  componentWillReceiveProps(nextProps) {
+    
+    const {item} = nextProps
+    this.setState({
+      nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
+      itemBudget : this.props.item.budget,
+     id: this.props.item.id})
+
+  }
+
+  setStateOfItemDetails = () => {
+
+    const {item} = this.props
+    this.state ={
+      nameOfItem : item.itemName, itemCost: item.cost,
       itemBudget : item.budget,
      id: item.id}
   }
@@ -36,12 +45,12 @@ class BudgetItemDetails extends Component {
 
     if(isEdit) {
 
-    const { itemName, itemBudget, itemCost, id} = this.state
+    const { nameOfItem, itemBudget, itemCost, id} = this.state
     const {onEditedItemsBudgetDetails} = this.props
 
     const editedItem = {
       id,
-      itemName, 
+      itemName :  nameOfItem,
       budget : itemBudget,
       cost : itemCost
     }
@@ -52,7 +61,10 @@ class BudgetItemDetails extends Component {
 }
 
   onChangeItemName = (event) => {
-    this.setState({itemName : event.target.value})
+
+    console.log(event.target.value);
+
+    this.setState({nameOfItem : event.target.value})
   }
 
   onChangeItemBudget = event => {
@@ -69,25 +81,22 @@ class BudgetItemDetails extends Component {
 
     const {item, deleteBudgetItem} = this.props
 
-    console.log(item, 'the item')
+   const {isEdit, nameOfItem, itemBudget, itemCost} = this.state
 
-   const {isEdit, itemName, itemBudget, itemCost} = this.state
-
-
-   console.log(isEdit, itemName, itemBudget)
+   const {itemName, budget, cost} = item
 
    return (
  <li className = "budget-item-container">
   {!isEdit && <>
-<p className = "budget-item">{itemName}</p>
-<p className = "budget-item">{itemBudget}</p>
+<p className = "budget-item">{nameOfItem}</p>
+<p className = "budget-item">{budget}</p>
 <p className = "budget-item">{itemCost}</p>
-<p className = "budget-item">{itemCost === 0 ? 0 :item.budget - item.cost}</p>
+<p className = "budget-item">{itemCost === 0 ? 0 :itemBudget - itemCost}</p>
 <button type='button' onClick = {this.onEditItemDetails}>Edit</button>
 <button type='button' onClick = {this.deleteItemIsClicked}>Delete</button>
 </>}
  {isEdit && <>
- <input type='text' value = {itemName} onChange = {this.onChangeItemName}/>
+ <input type='text' value = {nameOfItem} onChange = {this.onChangeItemName}/>
  <input type = 'text' value = {itemBudget} onChange = {this.onChangeItemBudget}/>
  <input type="text" value = {itemCost} onChange = {this.onChangeItemCost}/>
  <button type = "button" onClick = {this.onEditItemDetails}>Update</button>
@@ -95,8 +104,6 @@ class BudgetItemDetails extends Component {
  </>}
 </li>)}
     
-
-
 }
 
 

@@ -1,0 +1,31 @@
+.budget-item-inputs-container {
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+.budget-input-element {
+    width:90%;
+    border-radius: 5px;
+    padding :10px;
+    border : 1px solid grey;
+    margin:5px
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:90%;
+    padding: 10px
+}
+
+.add-iten-button {
+    background: #bdc3c7; 
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);
+    color:white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px
+}

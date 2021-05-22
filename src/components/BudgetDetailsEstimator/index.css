@@ -3,5 +3,26 @@
   display:flex;
   flex-direction:column;
   justify-content: center;
+  align-items:center; 
+  background: #bdc3c7; 
+  background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.budget-estimator-heading {
+  color: white;
+  font-family: cursive;
+  font-weight: 900;
+  font-size : 40px
+}
+
+
+.budget-inside-container{
+
+  background-color: White;
+  border-top-left-radius : 10px;
+  border-top-right-radius:10px;
+  display: flex;
+  flex-direction:column;
   align-items:center
 }

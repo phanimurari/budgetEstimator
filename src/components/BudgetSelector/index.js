@@ -1,5 +1,6 @@
 import {Component} from 'react'
 
+import './index.css'
 
 class BudgetSelector extends Component {
   state = { selectedItem : '', itemCost : ''}
@@ -13,8 +14,8 @@ class BudgetSelector extends Component {
 
     const {itemsBudgetDetails} = this.props
 
-    return <select  onChange = {this.onSelectItem}>
-    <option key ="select">select</option>
+    return <select className = "selector-element" onChange = {this.onSelectItem}>
+    <option key ="select">Select Item</option>
     {itemsBudgetDetails.map( item => <option key = {item.id}>{item.itemName}</option>)}
     </select>
   }
@@ -32,6 +33,7 @@ class BudgetSelector extends Component {
     const {selectedItem, itemCost} = this.state;
     if(itemCost !== '') {
       onAddCostOfItem(selectedItem, Number(itemCost))
+      this.setState({itemCost :''})
     }
   }
 
@@ -42,10 +44,10 @@ class BudgetSelector extends Component {
     const {itemCost} = this.state
 
     return (
-      <div>
+      <div className = "budget-selector-container">
         {this.renderSelectElement()}
-        <input type='text' value = {itemCost} onChange = {this.onChangeCost} placeholder ="cost"/>
-        <button type = 'button'  onClick = {this.addCostOfItem}>Add</button>
+        <input className = "budget-input-element" type='text' value = {itemCost} onChange = {this.onChangeCost} placeholder ="Cost of the Item"/>
+        <button type = 'button'  className = "add-iten-button" onClick = {this.addCostOfItem}>Add Cost</button>
       </div>
     )
   }

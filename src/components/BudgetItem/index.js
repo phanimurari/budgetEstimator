@@ -1,5 +1,6 @@
 import {Component} from 'react'
 
+import './index.css'
 
 class BudgetItem extends Component {
     state =  {item: '', itemBudget : '', id : ''}
@@ -46,10 +47,12 @@ render() {
 
   const {item, itemBudget} = this.state
 
-  return (<div>
-    <input type="input" value = {item} onChange = {this.onChangeItem}/>
-    <input type="input" value = {itemBudget} onChange = {this.onChangeItemBudget}/>
-    <button type="button" onClick = {this.onAddBudgetItem}>Add</button>
+  return (<div className = "budget-item-inputs-container">
+    <input className = "budget-input-element" type="input" value = {item} placeholder = "Name of the Item" onChange = {this.onChangeItem}/>
+    <input className = "budget-input-element" type="input" value = {itemBudget} placeholder = "Budget of the Item" onChange = {this.onChangeItemBudget}/>
+    <div className = "button-container">
+      <button className = "add-iten-button"type="button" onClick = {this.onAddBudgetItem}>Add Item</button>
+    </div>
   </div>)
 }
 

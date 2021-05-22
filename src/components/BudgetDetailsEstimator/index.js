@@ -99,11 +99,13 @@ onSettingItemsBudgetDetails = (itemsBudgetDetails) =>{
     
       return (
         <div className = "budget-estimator-container">
-        <h1>Budget Estimator</h1>
-        <BudgetItem onAddBudgetItem = {this.onAddBudgetItem}/>
-        <BudgetSelector itemsBudgetDetails = {itemsBudgetDetails} onAddCostOfItem ={this.onAddCostOfItem} />
-        <BudgetDetails onEditedItemsBudgetDetails = {this.onEditedItemsBudgetDetails} itemsBudgetDetails = {itemsBudgetDetails} onDeleteBudgetEstimator = {this.onDeleteBudgetEstimator}/>
-        <BudgetCalculations itemsBudgetDetails = {itemsBudgetDetails}/>
+        <h1 className = "budget-estimator-heading">Budget Estimator</h1>
+        <div className = "budget-inside-container">
+          <BudgetItem onAddBudgetItem = {this.onAddBudgetItem}/>
+          <BudgetSelector itemsBudgetDetails = {itemsBudgetDetails} onAddCostOfItem ={this.onAddCostOfItem} />
+          <BudgetDetails onEditedItemsBudgetDetails = {this.onEditedItemsBudgetDetails} itemsBudgetDetails = {itemsBudgetDetails} onDeleteBudgetEstimator = {this.onDeleteBudgetEstimator}/>
+          <BudgetCalculations itemsBudgetDetails = {itemsBudgetDetails}/>
+        </div>
         </div>
       )
     }
