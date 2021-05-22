@@ -2,15 +2,8 @@ import {Component} from 'react'
 
 class BudgetItemDetails extends Component {
 
-state = {isEdit : false,
-    nameOfItem : '', itemCost: '',
-    itemBudget : '',
-   id: ''}
-
   constructor(props) {
     super(props)
-
-    console.log('constructor');
 
     this.state = {isEdit : false,
       nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
@@ -21,14 +14,12 @@ state = {isEdit : false,
   componentWillReceiveProps(nextProps) {
     
     const {item} = nextProps
-
-    
-    this.setState = {
+    this.setState({
       nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
       itemBudget : this.props.item.budget,
-     id: this.props.item.id}
+     id: this.props.item.id})
 
-    }
+  }
 
   setStateOfItemDetails = () => {
 
