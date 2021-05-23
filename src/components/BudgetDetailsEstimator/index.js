@@ -53,12 +53,15 @@ onDeleteBudgetEstimator = (id) => {
 
   let {itemsBudgetDetails} = this.state
 
-  const updatedFilteredItems = itemsBudgetDetails.map( item => {
+  const updatedFilteredItems = itemsBudgetDetails.filter( item => {
     if(item.id !==id) {
       return item
     }
     return null
   })
+
+
+  console.log(updatedFilteredItems)
 
   this.onSettingItemsBudgetDetails(updatedFilteredItems)
 
