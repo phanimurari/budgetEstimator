@@ -13,13 +13,40 @@ class BudgetItemDetails extends Component {
      id: this.props.item.id}
 
   }
-  componentWillReceiveProps() {
+  // componentWillReceiveProps() {
     
+  //   this.setState({
+  //     nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
+  //     itemBudget : this.props.item.budget,
+  //    id: this.props.item.id})
+
+  // }
+
+  static getDerivedStateFromProps(props, state) {
+    // this.setState({
+    //   nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
+    //   itemBudget : this.props.item.budget,
+    //  id: this.props.item.id})
+
+    this.setTheState(props);
+
+    // return {
+    //   nameOfItem: props.item.itemName,
+    //   itemCost : props.item.cost,
+    //   itemBudget : props.item.budget,
+    //   id:props.item.id
+    // }
+
+
+  }
+
+
+  setTheState = () => {
+
     this.setState({
       nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
       itemBudget : this.props.item.budget,
      id: this.props.item.id})
-
   }
 
   deleteItemIsClicked = () => {

@@ -24,7 +24,7 @@ class BudgetItem extends Component {
     const {onAddBudgetItem} = this.props
     const{item, itemBudget} = this.state;
     const cost = 0;
-    if(item !== "" && itemBudget !== "") {
+    if(item !== "" && itemBudget !== ""  && !isNaN(itemBudget)) {
 
       this.setState({item : '', itemBudget: '', id : new Date()})
 
@@ -34,11 +34,10 @@ class BudgetItem extends Component {
         budget: Number(itemBudget),
         cost
       }
-
-
       onAddBudgetItem(addedItem)
-
-
+    }
+    else {
+      alert("Please give the valid items details");
     }
     
   }

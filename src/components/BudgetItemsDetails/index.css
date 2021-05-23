@@ -2,12 +2,12 @@
 .budget-item-container {
 
     display: flex;
-    width: 90%;
+    width: 80%;
     justify-content: space-between;
     padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid grey;
     border-radius : 5px;
-    margin:5px
 }
 
 
