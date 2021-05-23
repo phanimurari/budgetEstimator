@@ -61,7 +61,6 @@ onDeleteBudgetEstimator = (id) => {
   })
 
 
-  console.log(updatedFilteredItems)
 
   this.onSettingItemsBudgetDetails(updatedFilteredItems)
 
