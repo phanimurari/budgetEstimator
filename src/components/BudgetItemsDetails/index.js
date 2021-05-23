@@ -13,25 +13,14 @@ class BudgetItemDetails extends Component {
      id: this.props.item.id}
 
   }
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     
-    const {item} = nextProps
     this.setState({
       nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
       itemBudget : this.props.item.budget,
      id: this.props.item.id})
 
   }
-
-  setStateOfItemDetails = () => {
-
-    const {item} = this.props
-    this.state ={
-      nameOfItem : item.itemName, itemCost: item.cost,
-      itemBudget : item.budget,
-     id: item.id}
-  }
-
 
   deleteItemIsClicked = () => {
     const {item, deleteBudgetItem} = this.props
@@ -79,11 +68,11 @@ class BudgetItemDetails extends Component {
 
   render() {
 
-    const {item, deleteBudgetItem} = this.props
+    const {item} = this.props
 
    const {isEdit, nameOfItem, itemBudget, itemCost} = this.state
 
-   const {itemName, budget, cost} = item
+   const {budget} = item
 
    return (
  <li className = "budget-item-container">
@@ -92,15 +81,15 @@ class BudgetItemDetails extends Component {
 <p className = "budget-item">{budget}</p>
 <p className = "budget-item">{itemCost}</p>
 <p className = "budget-item">{itemCost === 0 ? 0 :itemBudget - itemCost}</p>
-<button type='button' onClick = {this.onEditItemDetails}>Edit</button>
-<button type='button' onClick = {this.deleteItemIsClicked}>Delete</button>
+<button type='button' className = "button" onClick = {this.onEditItemDetails}>Edit</button>
+<button type='button' className = "button" onClick = {this.deleteItemIsClicked}>Delete</button>
 </>}
  {isEdit && <>
- <input type='text' value = {nameOfItem} onChange = {this.onChangeItemName}/>
- <input type = 'text' value = {itemBudget} onChange = {this.onChangeItemBudget}/>
- <input type="text" value = {itemCost} onChange = {this.onChangeItemCost}/>
- <button type = "button" onClick = {this.onEditItemDetails}>Update</button>
- <button type='button' onClick = {this.deleteItemIsClicked}>Delete</button>
+ <input type='text' value = {nameOfItem} className = "input" onChange = {this.onChangeItemName}/>
+ <input type = 'text' value = {itemBudget} className = "input" onChange = {this.onChangeItemBudget}/>
+ <input type="text" value = {itemCost}  className = "input" onChange = {this.onChangeItemCost}/>
+ <button type = "button" className = "button" onClick = {this.onEditItemDetails}>Update</button>
+ <button type='button' className = "button" onClick = {this.deleteItemIsClicked}>Delete</button>
  </>}
 </li>)}
     

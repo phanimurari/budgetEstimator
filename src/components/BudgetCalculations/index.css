@@ -1,6 +1,9 @@
 
 .budget-calculations-container {
   display:flex;
+  border-radius: 5px;
+  border:1px solid grey;
+  margin: 10px;
 }
 
 .calculated-item {

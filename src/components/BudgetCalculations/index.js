@@ -14,8 +14,8 @@ const BudgetCalculations = props => {
   const totalBudget = () => {
 
 
-    itemsBudgetDetails.map(item => {
-      totalBudgetOfItems = totalBudgetOfItems + item.budget
+    itemsBudgetDetails.forEach(item => {
+      totalBudgetOfItems = totalBudgetOfItems + Number(item.budget)
     })
 
     return totalBudgetOfItems
@@ -25,8 +25,8 @@ const BudgetCalculations = props => {
 
   const totalCost = () => {
 
-    itemsBudgetDetails.map(item => {
-      totalCostOfItems = totalCostOfItems + item.cost
+    itemsBudgetDetails.forEach(item => {
+      totalCostOfItems = totalCostOfItems + Number(item.cost)
     })
 
     return totalCostOfItems

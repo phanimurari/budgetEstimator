@@ -25,7 +25,7 @@ renderItems = () => {
 
   render() {
 
-    return( <ul>
+    return( <ul className = "budget-items-container">
       {this.renderItems()}
     </ul>)
   }

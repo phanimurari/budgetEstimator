@@ -1,9 +1,9 @@
-.budget-item-container {
+.budget-items-container {
   list-style-type: none;
-  display:flex;
-  justify-content:space-between
+  width: 100%
 }
 
 .budget-item {
   margin:10px
 }
+
