@@ -1,6 +1,4 @@
 
-.budget-calculations-container {
-  border-radius: 5px;
-  border:1px solid grey;
-  border-radius: 5px
+.table-head {
+  border: 5px solid white;
 }

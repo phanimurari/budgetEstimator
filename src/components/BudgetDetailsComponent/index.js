@@ -5,6 +5,10 @@ import Table from 'react-bootstrap/Table'
 
 import  BudgetItemDetails from '../BudgetItemsDetails/index'
 
+
+const NO_ITEMS_ADDED = "https://res.cloudinary.com/imphanimurari/image/upload/c_thumb,w_200,g_face/v1622990972/BudgetEstimator/emptycart_mugqg6.jpg"
+
+
 class   BudgetDetails extends Component {
 
 deleteBudgetItem = (id) => {
@@ -25,22 +29,44 @@ renderItems = () => {
 }
 
 
+renderAddedItems = () => {
+  return(
+    <Table responsive className ="items-table-container">
+      <thead>
+        <tr className ="table-head">
+            <th className ="table-head-item">Item</th>
+            <th className ="table-head-item">Budget</th>
+            <th className ="table-head-item">Cost</th>
+            <th className ="table-head-item">Deviation</th>
+            <th className ="table-head-item">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {this.renderItems()}
+      </tbody>
+    </Table>)
+}
+
+
+
+renderNoItemsAdded = () => {
+  return <div className = 'items-not-added'>
+
+<p className ="no-items-found-text">No Items Added</p>
+<img src = {NO_ITEMS_ADDED} alt ="no-items-found" />
+
+  </div>
+}
+
+renderBasedOnNumberOfItems  = () => {
+  const {itemsBudgetDetails} = this.props
+return  itemsBudgetDetails.length === 0 ? this.renderNoItemsAdded() : this.renderAddedItems();
+}
+
+
   render() {
 
-    return(
-<Table responsive className ="items-table-container">
-  <thead>
-    <tr>
-        <th>Item</th>
-        <th>Budget</th>
-        <th>Cost</th>
-        <th>Deviation</th>
-    </tr>
-  </thead>
-  <tbody>
-  {this.renderItems()}
-  </tbody>
-</Table>)
+return(this.renderBasedOnNumberOfItems())
 }
 }
 

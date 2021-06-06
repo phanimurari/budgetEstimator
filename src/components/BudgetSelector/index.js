@@ -1,6 +1,7 @@
 import {Component} from 'react'
 
-import './index.css'
+
+const COST_ERROR_MSG = "Please add valid cost of the item"
 
 class BudgetSelector extends Component {
   state = { selectedItem : '', itemCost : ''}
@@ -28,17 +29,21 @@ class BudgetSelector extends Component {
 
     const itemCost = event.target.value
 
-    this.setState({itemCost})
+    this.setState({itemCost : Number(itemCost)})
 
   }
 
   addCostOfItem = () => {
     const {onAddCostOfItem} = this.props
     const {selectedItem, itemCost} = this.state;
-    if(itemCost !== '') {
-      onAddCostOfItem(selectedItem, Number(itemCost))
-      this.setState({itemCost :''})
+   
+    if(isNaN(typeof(itemCost))) {
+      alert(COST_ERROR_MSG)
     }
+    else {
+      onAddCostOfItem(selectedItem, Number(itemCost))
+    }
+    this.setState({itemCost :''})
   }
 
   
@@ -53,8 +58,10 @@ class BudgetSelector extends Component {
         <option key ="select">Select Item</option>
         {this.renderSelectElementOptions()}
         </select>
+        <div className ="budet-input-item-container">
         <input className = "budget-input-container" type='text' value = {itemCost} onChange = {this.onChangeCost} placeholder ="Cost of the Item"/>
         <button type = 'button'  className = "add-item-button" onClick = {this.addCostOfItem}>Add Cost</button>
+      </div>
       </div>
     )
   }

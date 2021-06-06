@@ -1,6 +1,7 @@
+import Table from 'react-bootstrap/Table'
+
 import './index.css'
 
-import Table from 'react-bootstrap/Table'
 
 const BudgetCalculations = props => {
 
@@ -43,16 +44,18 @@ const BudgetCalculations = props => {
 
 
   return(
-    <Table responsive className = "budget-calculations-container">
+    <Table responsive >
       <thead>
-        <tr>
+        <tr className ="table-head">
             <th>Total Items</th>
             <th>Total Budget</th>
             <th>Total Cost</th>
             <th>Deviation</th>
         </tr>
       </thead>
-  
+
+      <tbody>
+
       <tr>
         <td>{totalItems()}</td>
         <td> {totalBudget()}</td>
@@ -60,7 +63,6 @@ const BudgetCalculations = props => {
         <td> {deviation()}</td>
       </tr>
   
-      <tbody>
       </tbody>
     </Table>)
   
