@@ -49,13 +49,12 @@ class BudgetSelector extends Component {
 
     return (
       <div className = "budget-selector-container"> 
-        <select className = "selector-element" onChange = {this.onSelectItem}>
+        <select className = "budget-input-container" onChange = {this.onSelectItem}>
         <option key ="select">Select Item</option>
         {this.renderSelectElementOptions()}
         </select>
-        <input className = "budget-input-element" type='text' value = {itemCost} onChange = {this.onChangeCost} placeholder ="Cost of the Item"/>
-      
-        <button type = 'button'  className = "add-iten-button" onClick = {this.addCostOfItem}>Add Cost</button>
+        <input className = "budget-input-container" type='text' value = {itemCost} onChange = {this.onChangeCost} placeholder ="Cost of the Item"/>
+        <button type = 'button'  className = "add-item-button" onClick = {this.addCostOfItem}>Add Cost</button>
       </div>
     )
   }

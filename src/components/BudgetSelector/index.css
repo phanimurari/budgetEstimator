@@ -1,29 +1,7 @@
 
-.budget-selector-container {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 
-.selector-element {
-    padding: 10px;
-    margin: 5px;
-    border : 1px solid grey;
-    background-color: white;
-    border-radius: 5px;
-    color:grey;
-}
 
-.budget-input-element {
-    width: 60%;
-    border-radius: 5px;
-    padding :10px;
-    border : 1px solid grey;
-    margin:5px
-}
-
-.add-iten-button {
+.add-item-button {
     background: #bdc3c7; 
     background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
     background: linear-gradient(to right, #2c3e50, #bdc3c7);
@@ -31,4 +9,25 @@
     width: 20%;
     border: none;
     border-radius: 5px;
+}
+
+
+
+
+
+
+.budget-selector-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.selector-element {
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    margin:10px;
+    background-color: #f2f2f2;
 }

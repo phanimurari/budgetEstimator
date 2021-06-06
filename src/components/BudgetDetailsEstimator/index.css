@@ -25,6 +25,10 @@
     flex-direction:column;
     align-items:center;
   }
+
+  .budget-estimator-container {
+    padding-top:20%
+   }
 }
 
 @media screen and (min-width: 600px) {
@@ -39,6 +43,8 @@
     flex-direction:column;
     align-items:center;
   }
+
+ 
 }
 
 
