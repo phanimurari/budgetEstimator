@@ -1,32 +1,25 @@
-.budget-item-inputs-container {
+.budget-items-container {
     display: flex;
-    padding: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.budget-input-element {
-    width:90%;
-    border-radius: 5px;
-    padding :10px;
-    border : 1px solid grey;
-    margin:5px
-}
-
-.button-container {
-    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width:90%;
-    padding: 10px
 }
 
-.add-iten-button {
-    background: #bdc3c7; 
-    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
-    background: linear-gradient(to right, #2c3e50, #bdc3c7);
-    color:white;
-    padding: 10px;
+
+.budget-input-container {
     border: none;
-    border-radius: 5px
+    padding: 15px;
+    border-radius: 5px;
+    margin:10px;
+    background-color: #f2f2f2;
+}
+
+.add-item-button {
+        background: #bdc3c7; 
+        background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+        background: linear-gradient(to right, #2c3e50, #bdc3c7);
+        color:white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
 }

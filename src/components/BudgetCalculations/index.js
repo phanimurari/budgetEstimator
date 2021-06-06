@@ -1,5 +1,7 @@
 import './index.css'
 
+import Table from 'react-bootstrap/Table'
+
 const BudgetCalculations = props => {
 
   const {itemsBudgetDetails} = props
@@ -39,16 +41,37 @@ const BudgetCalculations = props => {
 
   }
 
-  return(
-    <div className = "budget-calculations-container">
-  <p className = "calculated-item">Total Items : {totalItems()}</p>
-  <p className = "calculated-item">Total Budget: {totalBudget()}</p>
-<p className = "calculated-item">Total Cost : {totalCost()}</p>
-<p className = "calculated-item">Deviation : {deviation()}</p>
-    </div>
-  )
 
+  return(
+    <Table responsive className = "budget-calculations-container">
+      <thead>
+        <tr>
+            <th>Total Items</th>
+            <th>Total Budget</th>
+            <th>Total Cost</th>
+            <th>Deviation</th>
+        </tr>
+      </thead>
+  
+      <tr>
+        <td>{totalItems()}</td>
+        <td> {totalBudget()}</td>
+        <td> {totalCost()}</td>
+        <td> {deviation()}</td>
+      </tr>
+  
+      <tbody>
+      </tbody>
+    </Table>)
+  
 }
+
+
+
+
+
+
+
 
 
 export default BudgetCalculations

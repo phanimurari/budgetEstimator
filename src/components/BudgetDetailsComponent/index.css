@@ -1,5 +1,6 @@
-.budget-items-container {
-  list-style-type: none;
-  width: 100%
+.items-table-container {
+ border-radius: 5px;
+ border : 1px solid grey;
+ margin-top: 15px;
 }
 

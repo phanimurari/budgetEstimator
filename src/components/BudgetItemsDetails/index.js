@@ -13,33 +13,14 @@ class BudgetItemDetails extends Component {
      id: this.props.item.id}
 
   }
-  // componentWillReceiveProps() {
+  componentWillReceiveProps() {
     
-  //   this.setState({
-  //     nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
-  //     itemBudget : this.props.item.budget,
-  //    id: this.props.item.id})
-
-  // }
-
-  static getDerivedStateFromProps(props, state) {
-    // this.setState({
-    //   nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
-    //   itemBudget : this.props.item.budget,
-    //  id: this.props.item.id})
-
-    this.setTheState(props);
-
-    // return {
-    //   nameOfItem: props.item.itemName,
-    //   itemCost : props.item.cost,
-    //   itemBudget : props.item.budget,
-    //   id:props.item.id
-    // }
-
+    this.setState({
+      nameOfItem : this.props.item.itemName, itemCost: this.props.item.cost,
+      itemBudget : this.props.item.budget,
+     id: this.props.item.id})
 
   }
-
 
   setTheState = () => {
 
@@ -102,25 +83,36 @@ class BudgetItemDetails extends Component {
    const {budget} = item
 
    return (
- <li className = "budget-item-container">
+ <tr className = "table-row">
   {!isEdit && <>
-<p className = "budget-item">{nameOfItem}</p>
-<p className = "budget-item">{budget}</p>
-<p className = "budget-item">{itemCost}</p>
-<p className = "budget-item">{itemCost === 0 ? 0 :itemBudget - itemCost}</p>
+<td className ="item-class">{nameOfItem}</td>
+<td className ="item-class">{budget}</td>
+<td className ="item-class">{itemCost}</td>
+<td className ="item-class">{itemCost === 0 ? 0 :itemBudget - itemCost}</td>
+<td className ="item-class">
 <button type='button' className = "button" onClick = {this.onEditItemDetails}>Edit</button>
+</td>
+<td className ="item-class">
 <button type='button' className = "button" onClick = {this.deleteItemIsClicked}>Delete</button>
+</td>
 </>}
- {isEdit && <>
- <input type='text' value = {nameOfItem} className = "input" onChange = {this.onChangeItemName}/>
- <input type = 'text' value = {itemBudget} className = "input" onChange = {this.onChangeItemBudget}/>
- <input type="text" value = {itemCost}  className = "input" onChange = {this.onChangeItemCost}/>
- <button type = "button" className = "button" onClick = {this.onEditItemDetails}>Update</button>
- <button type='button' className = "button" onClick = {this.deleteItemIsClicked}>Delete</button>
- </>}
-</li>)}
-    
+{isEdit && <>
+  <td> <input type='text' className ="item-class" value = {nameOfItem} onChange = {this.onChangeItemName}/> </td>
+ <td > <input type = 'text' className ="item-class" value = {itemBudget} onChange = {this.onChangeItemBudget}/> </td> 
+ <td > <input type="text" className ="item-class" value = {itemCost}  onChange = {this.onChangeItemCost}/> </td> 
+ <td>{itemBudget -itemCost}</td>
+  <td><button type = "button" className = "button" onClick = {this.onEditItemDetails}>Update</button> </td>
+ <td> <button type='button' className = "button" onClick = {this.deleteItemIsClicked}>Delete</button> </td>
+  </>
+} </tr>)
+
 }
 
+}
 
 export default BudgetItemDetails
+
+
+
+
+

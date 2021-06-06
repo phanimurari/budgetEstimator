@@ -46,16 +46,23 @@ render() {
 
   const {item, itemBudget} = this.state
 
-  return (<div className = "budget-item-inputs-container">
-    <input className = "budget-input-element" type="input" value = {item} placeholder = "Name of the Item" onChange = {this.onChangeItem}/>
-    <input className = "budget-input-element" type="input" value = {itemBudget} placeholder = "Budget of the Item" onChange = {this.onChangeItemBudget}/>
-    <div className = "button-container">
-      <button className = "add-iten-button"type="button" onClick = {this.onAddBudgetItem}>Add Item</button>
+  return (<div className = "budget-items-container">
+    <div className ="budet-input-item-container">
+       <input  type="input" className ="budget-input-container" value = {item} placeholder = "Name of the Item" onChange = {this.onChangeItem}/>
+    </div>
+    <div className ="budet-input-item-container">
+      <input type="input" className ="budget-input-container" value = {itemBudget} placeholder = "Budget of the Item" onChange = {this.onChangeItemBudget}/>
+      <button className = "add-item-button"type="button" onClick = {this.onAddBudgetItem}>Add Item</button>
     </div>
   </div>)
+
 }
 
 }
 
 
 export default BudgetItem
+
+
+
+

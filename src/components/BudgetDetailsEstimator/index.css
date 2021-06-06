@@ -1,11 +1,11 @@
 .budget-estimator-container {
-  display:flex;
-  flex-direction:column;
-  justify-content: center;
-  align-items:center; 
   background-image: url("https://res.cloudinary.com/imphanimurari/image/upload/v1621760961/BudgetEstimator/gradienta-bKESVqfxass-unsplash_pzt6me.jpg");
   background-size: cover;
-  height: 100vh;
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 .budget-estimator-heading {
@@ -16,12 +16,30 @@
 }
 
 
-.budget-inside-container{
-  background-color: White;
-  border-top-left-radius : 10px;
-  border-top-right-radius:10px;
-  display: flex;
-  flex-direction:column;
-  align-items:center;
-  padding: 10px;
+@media screen and (max-width: 600px) {
+  .budget-inside-container{
+    background-color: White;
+    border-top-left-radius : 10px;
+    border-top-right-radius:10px;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+  }
 }
+
+@media screen and (min-width: 600px) {
+  .budget-inside-container{
+    width:50%;
+    display: flex;
+    align-self: center;
+    background-color: White;
+    border-top-left-radius : 20px;
+    border-top-right-radius:20px;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+  }
+}
+
+
+

@@ -1,9 +1,11 @@
 import {Component} from 'react'
 import "./index.css"
 
+import Table from 'react-bootstrap/Table'
+
 import  BudgetItemDetails from '../BudgetItemsDetails/index'
 
-class BudgetDetails extends Component {
+class   BudgetDetails extends Component {
 
 deleteBudgetItem = (id) => {
   const { onDeleteBudgetEstimator} = this.props
@@ -25,13 +27,26 @@ renderItems = () => {
 
   render() {
 
-    return( <ul className = "budget-items-container">
-      {this.renderItems()}
-    </ul>)
-  }
-    
-  }
+    return(
+<Table responsive className ="items-table-container">
+  <thead>
+    <tr>
+        <th>Item</th>
+        <th>Budget</th>
+        <th>Cost</th>
+        <th>Deviation</th>
+    </tr>
+  </thead>
+  <tbody>
+  {this.renderItems()}
+  </tbody>
+</Table>)
+}
+}
 
 
 
 export default BudgetDetails
+
+
+
