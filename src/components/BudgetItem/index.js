@@ -23,7 +23,7 @@ class BudgetItem extends Component {
   onAddBudgetItem = () => {
     const {onAddBudgetItem} = this.props
     const{item, itemBudget} = this.state;
-    const cost = 0;
+    const cost = "Add Cost";
     if(item !== "" && itemBudget !== ""  && !isNaN(itemBudget)) {
 
       this.setState({item : '', itemBudget: '', id : new Date()})

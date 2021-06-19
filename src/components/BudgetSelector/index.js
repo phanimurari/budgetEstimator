@@ -27,17 +27,21 @@ class BudgetSelector extends Component {
 
   onChangeCost = event => {
 
-    const itemCost = event.target.value
+    const itemCost = parseInt(event.target.value)
 
-    this.setState({itemCost : Number(itemCost)})
-
+    if(!isNaN(itemCost)) {
+      this.setState({itemCost : itemCost})
+    }
+    else if(event.target.value === '') {
+      this.setState({itemCost : ''})
+    }
   }
 
   addCostOfItem = () => {
     const {onAddCostOfItem} = this.props
     const {selectedItem, itemCost} = this.state;
    
-    if(isNaN(typeof(itemCost))) {
+    if(!isNaN(typeof(itemCost))) {
       alert(COST_ERROR_MSG)
     }
     else {
@@ -45,8 +49,6 @@ class BudgetSelector extends Component {
     }
     this.setState({itemCost :''})
   }
-
-  
 
   render() {
 

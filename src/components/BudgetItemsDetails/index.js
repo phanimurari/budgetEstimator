@@ -2,6 +2,8 @@ import {Component} from 'react'
 
 import './index.css'
 
+const ADD_CONST = "Add Cost"
+
 class BudgetItemDetails extends Component {
 
   constructor(props) {
@@ -74,6 +76,17 @@ class BudgetItemDetails extends Component {
     this.setState({itemCost : event.target.value})
   }
 
+  renderItemDeviation = () => {
+
+    const {itemBudget, itemCost} = this.state
+    const itemCostInNumber = parseInt(itemCost)
+
+    if(!isNaN(itemCostInNumber)) {
+      return itemBudget - itemCost
+    }
+    return '-'
+  }
+
   render() {
 
     const {item} = this.props
@@ -88,7 +101,7 @@ class BudgetItemDetails extends Component {
 <td className ="item-class">{nameOfItem}</td>
 <td className ="item-class">{budget}</td>
 <td className ="item-class">{itemCost}</td>
-<td className ="item-class">{itemCost === 0 ? 0 :itemBudget - itemCost}</td>
+<td className ="item-class">{itemCost === ADD_CONST ? '-' : this.renderItemDeviation()}</td>
 <td className ="item-class">
 <button type='button' className = "button" onClick = {this.onEditItemDetails}>Edit</button>
 </td>
@@ -100,7 +113,7 @@ class BudgetItemDetails extends Component {
   <td> <input type='text' className ="item-class" value = {nameOfItem} onChange = {this.onChangeItemName}/> </td>
  <td > <input type = 'text' className ="item-class" value = {itemBudget} onChange = {this.onChangeItemBudget}/> </td> 
  <td > <input type="text" className ="item-class" value = {itemCost}  onChange = {this.onChangeItemCost}/> </td> 
- <td>{itemBudget -itemCost}</td>
+ <td>{itemCost === ADD_CONST ? '-' : this.renderItemDeviation()}</td>
   <td><button type = "button" className = "button" onClick = {this.onEditItemDetails}>Update</button> </td>
  <td> <button type='button' className = "button" onClick = {this.deleteItemIsClicked}>Delete</button> </td>
   </>
