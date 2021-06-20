@@ -3,6 +3,7 @@ import {Component} from 'react'
 import './index.css'
 
 const ADD_CONST = "Add Cost"
+const ADD_BUDGET = "Add Budget"
 
 class BudgetItemDetails extends Component {
 
@@ -41,28 +42,34 @@ class BudgetItemDetails extends Component {
 
     const{isEdit} = this.state
     this.setState({isEdit : !isEdit})
-
-    if(isEdit) {
-
     const { nameOfItem, itemBudget, itemCost, id} = this.state
     const {onEditedItemsBudgetDetails} = this.props
+    const itemCostInNumber = parseInt(itemCost);
+    const itemBudgetInNumber = parseInt(itemBudget);
 
+    let updatedItemCost = itemCost;
+    let updateBudgetItemCost = itemBudgetInNumber;
+
+     if(isNaN(itemCostInNumber) || itemCostInNumber === 0) {
+      updatedItemCost = ADD_CONST
+     }
+
+     if(isNaN(itemBudgetInNumber) || itemBudgetInNumber === 0) {
+       updateBudgetItemCost = ADD_BUDGET
+     }
+     
     const editedItem = {
       id,
       itemName :  nameOfItem,
-      budget : itemBudget,
-      cost : itemCost
+      budget : updateBudgetItemCost,
+      cost : updatedItemCost
     }
 
+    this.setState({itemCost : updatedItemCost, itemBudget : updateBudgetItemCost})
     onEditedItemsBudgetDetails(editedItem)
-    
-  }
 }
 
   onChangeItemName = (event) => {
-
-    console.log(event.target.value);
-
     this.setState({nameOfItem : event.target.value})
   }
 
@@ -80,11 +87,19 @@ class BudgetItemDetails extends Component {
 
     const {itemBudget, itemCost} = this.state
     const itemCostInNumber = parseInt(itemCost)
+    const itemBudgetInNumber =  parseInt(itemBudget)
+    let deviationAmount = '-'
+    let deviationAmountClass = 'positive-deviation'
 
-    if(!isNaN(itemCostInNumber)) {
-      return itemBudget - itemCost
+    if(!isNaN(itemCostInNumber) && !isNaN(itemBudgetInNumber)) {
+      deviationAmount = itemBudget - itemCost
+      if(deviationAmount < 0) {
+        deviationAmountClass = "negative-deviation"
+      }
     }
-    return '-'
+
+    return <td className ={deviationAmountClass}>{deviationAmount}</td>
+
   }
 
   render() {
@@ -101,7 +116,7 @@ class BudgetItemDetails extends Component {
 <td className ="item-class">{nameOfItem}</td>
 <td className ="item-class">{budget}</td>
 <td className ="item-class">{itemCost}</td>
-<td className ="item-class">{itemCost === ADD_CONST ? '-' : this.renderItemDeviation()}</td>
+{itemCost === ADD_CONST  || itemBudget === ADD_BUDGET ? '-' : this.renderItemDeviation()}
 <td className ="item-class">
 <button type='button' className = "button" onClick = {this.onEditItemDetails}>Edit</button>
 </td>
@@ -113,7 +128,7 @@ class BudgetItemDetails extends Component {
   <td> <input type='text' className ="item-class" value = {nameOfItem} onChange = {this.onChangeItemName}/> </td>
  <td > <input type = 'text' className ="item-class" value = {itemBudget} onChange = {this.onChangeItemBudget}/> </td> 
  <td > <input type="text" className ="item-class" value = {itemCost}  onChange = {this.onChangeItemCost}/> </td> 
- <td>{itemCost === ADD_CONST ? '-' : this.renderItemDeviation()}</td>
+ {itemCost === ADD_CONST  || itemBudget === ADD_BUDGET  ? '-' : this.renderItemDeviation()}
   <td><button type = "button" className = "button" onClick = {this.onEditItemDetails}>Update</button> </td>
  <td> <button type='button' className = "button" onClick = {this.deleteItemIsClicked}>Delete</button> </td>
   </>

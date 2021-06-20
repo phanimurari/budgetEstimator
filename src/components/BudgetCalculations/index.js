@@ -18,28 +18,35 @@ const BudgetCalculations = props => {
 
 
     itemsBudgetDetails.forEach(item => {
-      totalBudgetOfItems = totalBudgetOfItems + Number(item.budget)
+
+      const itemBudgetInNumber = parseInt(item.budget)
+      
+      if(!isNaN(itemBudgetInNumber)){
+       
+        totalBudgetOfItems = totalBudgetOfItems + Number(item.budget)
+      }
     })
-
     return totalBudgetOfItems
-
-
   }
 
   const totalCost = () => {
 
     itemsBudgetDetails.forEach(item => {
-      totalCostOfItems = totalCostOfItems + Number(item.cost)
+      const itemCostInNumber = parseInt(item.cost)
+      if(!isNaN(itemCostInNumber)) {
+        console.log(isNaN(itemCostInNumber))
+        totalCostOfItems = totalCostOfItems + Number(item.cost)
+      }
+     
     })
-
     return totalCostOfItems
-
   }
 
 
   const deviation = () => {
-    return totalBudgetOfItems - totalCostOfItems
-
+    const deviation = totalBudgetOfItems - totalCostOfItems
+    const deviationClass = deviation >= 0 ? "postive-deviation" : "negative-deviation"
+    return <td className = {deviationClass}>{deviation}</td>
   }
 
 
@@ -57,10 +64,10 @@ const BudgetCalculations = props => {
       <tbody>
 
       <tr>
-        <td>{totalItems()}</td>
-        <td> {totalBudget()}</td>
-        <td> {totalCost()}</td>
-        <td> {deviation()}</td>
+        <td className = "budget-item">{totalItems()}</td>
+        <td className = "budget-item" > {totalBudget()}</td>
+        <td className = "budget-item" > {totalCost()}</td>
+      {deviation()}
       </tr>
   
       </tbody>
