@@ -4,15 +4,13 @@
  margin-top: 15px;
 }
 
-
 .table-head-item {
-    text-align: center;
+    text-align: center
 }
 
 .no-items-found-text  {
     font-size: 20px;
 }
-
 
 .items-not-added {
     padding: 20px;
