@@ -1,5 +1,6 @@
 import {Component} from 'react'
 
+import './index.css'
 
 const COST_ERROR_MSG = "Please add valid cost of the item"
 

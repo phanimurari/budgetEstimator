@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table'
 import  BudgetItemDetails from '../BudgetItemsDetails/index'
 
 
-const NO_ITEMS_ADDED = "https://res.cloudinary.com/imphanimurari/image/upload/c_thumb,w_200,g_face/v1622990972/BudgetEstimator/emptycart_mugqg6.jpg"
+const NO_ITEMS_ADDED = "https://res.cloudinary.com/imphanimurari/image/upload/c_thumb,w_200,g_face/v1624200466/BudgetEstimator/empty_zhpgis.jpg"
 
 
 class   BudgetDetails extends Component {
@@ -33,7 +33,7 @@ renderAddedItems = () => {
   return(
     <Table responsive className ="items-table-container">
       <thead>
-        <tr className ="table-head">
+        <tr>
             <th className ="table-head-item">Item</th>
             <th className ="table-head-item">Budget</th>
             <th className ="table-head-item">Cost</th>
